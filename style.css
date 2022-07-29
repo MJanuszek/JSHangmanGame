@@ -1,0 +1,38 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-size: 25px;
+    background-color: rgb(221, 214, 214);
+}
+
+input, button, h4, div {
+    font-size: 25px;
+    padding: 5px;
+    margin-top: 2vh;
+}
+
+input {
+    max-width: 40px;
+}
+
+.life {
+    background-color: rgb(238, 0, 0);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    height: 20px;
+    min-width: 25px;
+    display: inline-block;
+    border: 2px solid black;
+    margin-left: 1vw;
+}
+
+.letter {
+    background-color: #fff;
+    height: 50px;
+    min-width: 45px;
+    display: inline-block;
+    border: 2px solid black;
+    margin-left: 1vw;
+}

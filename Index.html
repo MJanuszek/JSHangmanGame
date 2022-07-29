@@ -5,10 +5,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Hangman Game</title>
 </head>
 
 <body>
+
+    <div class="wrapper">
+        <h2>Hangman Game</h2>
+        <h4>Guess the word or loose your life: </h4>
+        <div class="lives">
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+            <div class="life"></div>
+        </div>
+        <div class="word-to-guess">
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+        </div>
+
+        <label for="input">Check letter: </label>
+        <input class="input-letter" type="text">
+        <button class="check-letter">Check letter</button>
+        <h4>Letters you checked: </h4>
+        <div class="used-letters">Try again</div>
+
+
+    </div>
+    <script src="main.js"></script>
 
 </body>
 
