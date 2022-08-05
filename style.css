@@ -1,6 +1,7 @@
 * {
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
 }
 
 body {
@@ -9,6 +10,7 @@ body {
 }
 
 input, button, h4, div {
+    
     font-size: 25px;
     padding: 5px;
     margin-top: 2vh;
@@ -27,12 +29,17 @@ input {
     border: 2px solid black;
     margin-left: 1vw;
 }
+div {
+    display: block;
+}
+
 
 .letter {
+    display: inline-block;
     background-color: #fff;
+    padding: 2px;
     height: 50px;
     min-width: 45px;
-    display: inline-block;
     border: 2px solid black;
     margin-left: 1vw;
 }
