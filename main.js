@@ -24,8 +24,12 @@ const currentWord = "pantera";
 // selectWord()
 const selectWordToPlay = () => {
 
+    // remove current word to draw another::: 
+    wordToGuess.textContent = "";
+
+    // create letter fields from draw word::::
     for (let i =0; i<currentWord.length; i++){
-        const letterField = document.createElement("div");
+        let letterField = document.createElement("div");
         letterField.classList.add("circle");
         wordToGuess.appendChild(letterField);
         letterField.setAttribute("letter", currentWord[i]);
@@ -50,16 +54,18 @@ const selectWordToPlay = () => {
 
 
 
-// 
+// compare letter from input with letters in draw word::::::
 const checkLetter = () => {
     // console.log(inputLetter.value);
-    for(let i=0; i< currentWord.length; i++) {
-        if (inputLetter.value === currentWord[i]) {
-            console.log("ok");
+    for(let i=0; i < wordToGuess.children.length; i++) {
+        if (inputLetter.value === wordToGuess.children[i].getAttribute("letter")) {
+           
+            wordToGuess.children[i].textContent = wordToGuess.children[i].getAttribute("letter");
 
-         } else {
-            console.log("nie ma")
          } 
+        // else {
+        //     console.log("nie ma")
+        //  } 
     } 
 
     // add letter to used letters:
