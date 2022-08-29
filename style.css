@@ -43,3 +43,21 @@ div {
     border: 2px solid black;
     margin-left: 1vw;
 }
+
+.word-to-guess {
+    background-color: rgb(195, 195, 195);
+}
+
+.used-letters {
+    background-color: rgb(163, 163, 163);
+}
+
+.circle {
+    background-color: rgb(255, 241, 114);
+    border: 1px solid black;
+    min-height: 60px;
+    min-width: 40px;
+    display: inline-block;
+    margin-left: 1px;
+    
+}

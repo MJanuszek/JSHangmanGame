@@ -14,7 +14,7 @@
     <div class="wrapper">
         <h2>Hangman Game</h2>
         <h4>Guess the word or loose your life: </h4>
-        <button class="select-word">Draw word</button>
+
         <div class="lives">
             <div class="life"></div>
             <div class="life"></div>
@@ -22,23 +22,15 @@
             <div class="life"></div>
             <div class="life"></div>
         </div>
-        <div class="word-to-guess">
-            <br>
-            <!-- wordToPlay[0].attributes.letter.value
-            <div letter="p" class="letter"></div>
-            <div letter="a" class="letter"></div>
-            <div letter="n" class="letter"></div>
-            <div letter="t" class="letter"></div>
-            <div letter="e" class="letter"></div>
-            <div letter="r" class="letter"></div> -->
-        </div>
+
 
         <label for="input">Check letter: </label>
         <input class="input-letter" type="text">
-        <button class="check-letter">Check letter</button>
+        <button class="button check-letter">Check letter</button>
         <h4>Letters you checked: </h4>
         <div class="used-letters"></div>
-
+        <button class="button select-word">Draw word</button>
+        <div class="word-to-guess"></div>
 
     </div>
     <script src="main.js"></script>
