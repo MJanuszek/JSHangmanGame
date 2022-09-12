@@ -1,6 +1,6 @@
 // :::: FROM HTML :::::::::::::::::::::::::::::::::::
 // lives:::
-const lives = document.querySelectorAll(".life");
+let lives = document.querySelector(".lives");
 const checkLetterBtn = document.querySelector(".check-letter");
 // button to draw a word:
 const selectWord = document.querySelector(".select-word");
@@ -15,44 +15,33 @@ let wordToGuess = document.querySelector(".word-to-guess");
 const usedLettersDisplay = document.querySelector(".used-letters");
 // ::::::: END FROM HTML :::::::::::::::::::::::::::::::::::
 
-
-const words = ["panter", "tiger", "elephant"];
-
-const currentWord = "pantera";
+// WORDS BANK::::::::::::
+const words = ["panter", "tiger", "elephant", "panda", "parrot", "bat", "donkey", "SeaHorse", "bee"];
+let currentWord = "";
 
 
 // selectWord()
 const selectWordToPlay = () => {
 
-    // remove current word to draw another::: 
+    // prevent to draw same word twice::: 
     wordToGuess.textContent = "";
 
+    // draw random word from array::::::::::
+    currentWord = words[Math.floor(Math.random()*words.length)];
+    console.log(currentWord);
+
     // create letter fields from draw word::::
-    for (let i =0; i<currentWord.length; i++){
+    for (let i=0; i<currentWord.length; i++){
         let letterField = document.createElement("div");
         letterField.classList.add("circle");
         wordToGuess.appendChild(letterField);
         letterField.setAttribute("letter", currentWord[i]);
     } 
 
-    // if (wordToGuess){
-    //     selectWord.disabled = true;
-    //     const newGameBtn = document.createElement("button");
-    //     document.body.appendChild(newGameBtn);
-    //     newGameBtn.classList.add("button");
-    //     newGameBtn.textContent = "Zacznij nową grę";
-    //     newGameBtn.addEventListener("click", startNewGame = () => {
-    //             console.log("ok");
-    //             wordToGuess.textContent = "the end";
-    //             selectWord.disabled = false;
+    createLifes()
 
-    //     });
-       
-    // };
    
 }
-
-
 
 // compare letter from input with letters in draw word::::::
 const checkLetter = () => {
@@ -63,15 +52,47 @@ const checkLetter = () => {
             wordToGuess.children[i].textContent = wordToGuess.children[i].getAttribute("letter");
 
          } 
-        // else {
-        //     console.log("nie ma")
-        //  } 
+        //  JEŚLI słowo nie występyje usuń punkt life:::::::::::
+         else if(inputLetter.value !== wordToGuess.children[i].getAttribute("letter")) {
+            console.log(`Brak litery ${inputLetter.value} `);
+            // lives.pop()
+         }
+
+
+
+
+
+        // end of For loop::::::::::::::::
     } 
 
     // add letter to used letters:
     usedLettersDisplay.textContent += inputLetter.value + " ";
     // clear input value::
     inputLetter.value = "";
+}
+
+const createLifes = () => {
+    lives = "";
+    
+    if (currentWord.length <4) {
+        for (i=0; i<2; i++) {
+         let life = document.createElement("div");
+         life.classList.add("life");
+         lives.appendChild(life);
+        }
+     } else if (currentWord.length >4 && currentWord.length <7) {
+         for (i=0; i<3; i++) {
+             let life = document.createElement("div");
+             life.classList.add("life");
+             lives.appendChild(life);
+            }
+     } else if (currentWord.length > 7) {
+        for (i=0; i<5; i++) {
+            let life = document.createElement("div");
+            life.classList.add("life");
+            lives.appendChild(life);
+           }
+    }
 }
 
 
