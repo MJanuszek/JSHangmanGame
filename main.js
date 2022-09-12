@@ -59,9 +59,6 @@ const checkLetter = () => {
          }
 
 
-
-
-
         // end of For loop::::::::::::::::
     } 
 
@@ -71,8 +68,19 @@ const checkLetter = () => {
     inputLetter.value = "";
 }
 
+
+
+
+
+// create life points accordingly to word to guess length:::::::::
 const createLifes = () => {
-    lives = "";
+
+        let number = lives.children.length;
+
+        for (let i = 0; i<number; i++){
+            lives.removeChild(lives.children[0]);
+            console.log(lives.children.length);
+        }
     
     if (currentWord.length <4) {
         for (i=0; i<2; i++) {
@@ -80,7 +88,7 @@ const createLifes = () => {
          life.classList.add("life");
          lives.appendChild(life);
         }
-     } else if (currentWord.length >4 && currentWord.length <7) {
+     } else if (currentWord.length >=4 && currentWord.length<=7) {
          for (i=0; i<3; i++) {
              let life = document.createElement("div");
              life.classList.add("life");
@@ -94,7 +102,6 @@ const createLifes = () => {
            }
     }
 }
-
 
 selectWord.addEventListener("click", selectWordToPlay);
 checkLetterBtn.addEventListener("click", checkLetter);
