@@ -38,21 +38,25 @@ const selectWordToPlay = () => {
         letterField.setAttribute("letter", currentWord[i]);
     } 
 
+    // after drawing word (its length is relevant) create life points:::
     createLifes()
-
-   
 }
+
+
 
 // compare letter from input with letters in draw word::::::
 const checkLetter = () => {
+    let foundLetter = false;
     // console.log(inputLetter.value);
     for(let i=0; i < wordToGuess.children.length; i++) {
         if (inputLetter.value === wordToGuess.children[i].getAttribute("letter")) {
            
             wordToGuess.children[i].textContent = wordToGuess.children[i].getAttribute("letter");
 
+            foundLetter = true;
+
          } 
-        //  JEŚLI słowo nie występyje usuń punkt life:::::::::::
+        //  JEŚLI słowo nie występuje usuń punkt life:::::::::::
          else if(inputLetter.value !== wordToGuess.children[i].getAttribute("letter")) {
             console.log(`Brak litery ${inputLetter.value} `);
             // lives.pop()
@@ -60,15 +64,19 @@ const checkLetter = () => {
 
 
         // end of For loop::::::::::::::::
-    } 
+    }
+    
+    if (foundLetter === false) {
+        lives.removeChild(lives.children[0]);
+    }
 
     // add letter to used letters:
     usedLettersDisplay.textContent += inputLetter.value + " ";
     // clear input value::
     inputLetter.value = "";
+
+    // end of checkLetter();
 }
-
-
 
 
 
