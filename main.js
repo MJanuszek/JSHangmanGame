@@ -13,6 +13,8 @@ let wordToGuess = document.querySelector(".word-to-guess");
 // const wordToPlay = document.querySelectorAll(".letter")
 // div to display used letters::
 const usedLettersDisplay = document.querySelector(".used-letters");
+// game list div for img::::
+const gameLost = document.querySelector(".game-lost")
 // ::::::: END FROM HTML :::::::::::::::::::::::::::::::::::
 
 // WORDS BANK::::::::::::
@@ -66,9 +68,21 @@ const checkLetter = () => {
         // end of For loop::::::::::::::::
     }
     
+    // remove life if letter is incorrect::::
     if (foundLetter === false) {
         lives.removeChild(lives.children[0]);
+        // lives amount equals 0 = game over::::
+        if (lives.children.length === 0){
+            console.log("Game over");
+
+            document.getElementById("skull").style.backgroundImage = "url('img.skull.png')"
+            // document.body.style.backgroundImage = "url('img.skull.png')";
+            // gameLost
+        }
     }
+
+    
+  
 
     // add letter to used letters:
     usedLettersDisplay.textContent += inputLetter.value + " ";
@@ -111,5 +125,6 @@ const createLifes = () => {
     }
 }
 
+// event listeners:::::
 selectWord.addEventListener("click", selectWordToPlay);
 checkLetterBtn.addEventListener("click", checkLetter);
