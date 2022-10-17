@@ -61,3 +61,8 @@ div {
     margin-left: 1px;
     
 }
+#skull {
+    min-height: 200px;
+    background-repeat: no-repeat;
+    margin: 0px auto;
+}

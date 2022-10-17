@@ -70,19 +70,21 @@ const checkLetter = () => {
     
     // remove life if letter is incorrect::::
     if (foundLetter === false) {
-        lives.removeChild(lives.children[0]);
         // lives amount equals 0 = game over::::
+        if (lives.children.length > 0) {
+            lives.removeChild(lives.children[0]);
+        }
         if (lives.children.length === 0){
             console.log("Game over");
-
-            document.getElementById("skull").style.backgroundImage = "url('img.skull.png')"
+            // show skull img as game over (lost) picture:::::
+            document.getElementById("skull").style.backgroundImage = "url('img/skull.png')"
             // document.body.style.backgroundImage = "url('img.skull.png')";
             // gameLost
+             return
         }
+        
     }
 
-    
-  
 
     // add letter to used letters:
     usedLettersDisplay.textContent += inputLetter.value + " ";
