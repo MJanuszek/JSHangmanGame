@@ -18,7 +18,7 @@ const gameLost = document.querySelector(".game-lost")
 // ::::::: END FROM HTML :::::::::::::::::::::::::::::::::::
 
 // WORDS BANK::::::::::::
-const words = ["panter", "tiger", "elephant", "panda", "parrot", "bat", "donkey", "SeaHorse", "bee"];
+const words = ["panter", "tiger", "elephant", "panda", "parrot", "bat", "donkey", "horse", "bee"];
 let currentWord = "";
 let letterChecked = [];
 let allLettersInWord = 0;
@@ -26,7 +26,15 @@ let allLettersInWord = 0;
 
 // selectWord()
 const selectWordToPlay = () => {
+    // clean slate new game :::
     checkLetterBtn.disabled = false;
+    letterChecked = [];
+    allLettersInWord = 0;
+    usedLettersDisplay.textContent = "";
+    document.getElementById("end-img").style.backgroundImage = null;
+// ------------------------------
+
+
     // prevent to draw same word twice::: 
     wordToGuess.textContent = "";
 
@@ -56,8 +64,15 @@ const checkLetter = () => {
             inputLetter.value = "";
             return
         }
-        
     }
+    // if input is empty::::
+    if (inputLetter.value === "") {
+        console.log ("Letter field is empty");
+        return
+    }
+
+    // if input is type number::::
+
    
     // ----
     let foundLetter = false;
