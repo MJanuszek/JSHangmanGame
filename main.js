@@ -20,11 +20,13 @@ const gameLost = document.querySelector(".game-lost")
 // WORDS BANK::::::::::::
 const words = ["panter", "tiger", "elephant", "panda", "parrot", "bat", "donkey", "SeaHorse", "bee"];
 let currentWord = "";
-
+let letterChecked = [];
+let allLettersInWord = 0;
+// -------------------------------------------
 
 // selectWord()
 const selectWordToPlay = () => {
-
+    checkLetterBtn.disabled = false;
     // prevent to draw same word twice::: 
     wordToGuess.textContent = "";
 
@@ -43,33 +45,43 @@ const selectWordToPlay = () => {
     // after drawing word (its length is relevant) create life points:::
     createLifes()
 }
-
-
+// -------------------------------------------------------------------
 
 // compare letter from input with letters in draw word::::::
 const checkLetter = () => {
+    // if letter already checked:
+    for (let i = 0; i< letterChecked.length; i++) {
+        if (inputLetter.value === letterChecked[i]){
+            console.log("Letter already checked, try different letter");
+            inputLetter.value = "";
+            return
+        }
+        
+    }
+   
+    // ----
     let foundLetter = false;
+    
     // console.log(inputLetter.value);
     for(let i=0; i < wordToGuess.children.length; i++) {
         if (inputLetter.value === wordToGuess.children[i].getAttribute("letter")) {
-           
             wordToGuess.children[i].textContent = wordToGuess.children[i].getAttribute("letter");
-
             foundLetter = true;
-
-         } 
-        //  JEŚLI słowo nie występuje usuń punkt life:::::::::::
-         else if(inputLetter.value !== wordToGuess.children[i].getAttribute("letter")) {
-            console.log(`Brak litery ${inputLetter.value} `);
-            // lives.pop()
+            allLettersInWord++; 
          }
 
-
-        // end of For loop::::::::::::::::
+         // end game win img:::::::
+         if(allLettersInWord === wordToGuess.children.length) {
+            console.log("All letters found");
+            document.getElementById("end-img").style.backgroundImage = "url('img/rainbow.jpg')";
+            checkLetterBtn.disabled = true;
+        }
     }
-    
+
+    // ------------------------------------------------------------
     // remove life if letter is incorrect::::
     if (foundLetter === false) {
+        console.log(`Brak litery ${inputLetter.value} `);
         // lives amount equals 0 = game over::::
         if (lives.children.length > 0) {
             lives.removeChild(lives.children[0]);
@@ -77,24 +89,22 @@ const checkLetter = () => {
         if (lives.children.length === 0){
             console.log("Game over");
             // show skull img as game over (lost) picture:::::
-            document.getElementById("skull").style.backgroundImage = "url('img/skull.png')"
-            // document.body.style.backgroundImage = "url('img.skull.png')";
-            // gameLost
+            document.getElementById("end-img").style.backgroundImage = "url('img/skull.png')"
              return
         }
         
     }
-
-
     // add letter to used letters:
-    usedLettersDisplay.textContent += inputLetter.value + " ";
+    letterChecked.push(inputLetter.value); 
+    usedLettersDisplay.textContent = letterChecked ;
     // clear input value::
     inputLetter.value = "";
 
     // end of checkLetter();
 }
 
-
+// --------------------------------------------------------------------------
+// ---------------------------
 
 // create life points accordingly to word to guess length:::::::::
 const createLifes = () => {
@@ -126,6 +136,7 @@ const createLifes = () => {
            }
     }
 }
+// -------------------------------------------------------------------
 
 // event listeners:::::
 selectWord.addEventListener("click", selectWordToPlay);
