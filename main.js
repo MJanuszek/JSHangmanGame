@@ -28,13 +28,12 @@ let allLettersInWord = 0;
 const selectWordToPlay = () => {
     // clean slate new game :::
     checkLetterBtn.disabled = false;
+    inputLetter.value = "";
     letterChecked = [];
     allLettersInWord = 0;
     usedLettersDisplay.textContent = "";
     document.getElementById("end-img").style.backgroundImage = null;
 // ------------------------------
-
-
     // prevent to draw same word twice::: 
     wordToGuess.textContent = "";
 
@@ -73,8 +72,12 @@ const checkLetter = () => {
 
     // if input is type number::::
 
-   
-    // ----
+    if (inputLetter.value * 1) {
+        console.log ("Use letters not numbers");
+        inputLetter.value = "";
+        return
+    }
+
     let foundLetter = false;
     
     // console.log(inputLetter.value);
